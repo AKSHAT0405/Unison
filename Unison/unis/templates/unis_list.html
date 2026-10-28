@@ -1,7 +1,24 @@
 {% extends "layout.html" %}
-{% block title %}
-    Unis 
+{% block title %} 
+    Unis
 {% endblock %}
 {% block content %}
-    <h1 class = "text-center mt-4">welcome to Unison</h1>
+    <h1 class="text-center mt-4">welcome to Unison</h1>
+
+    <a class="btn btn-primary mb-4" href="{% url 'unis_create' %}">create a tweet</a>
+    <div class="container row gap-3">
+        {% for unis in uniss %}
+            <section class="card" style="max-width: 320px">
+                <img src="{{unis.photo.url}}" class="card-img-top" alt="..." />
+                <div class="card-body">
+                <h4 class="card-title">{{ unis.user.username}}</h4>
+                <p class="card-text">
+                    {{ unis.text}}
+                </p>
+                <a href="{% url 'unis_edit' unis.id %}" class="btn-solid theme-primary">Edit</a>
+                <a href="{% url 'unis_delete' unis.id %}" class="btn-solid theme-primary">Delete</a>
+                </div>
+            </section>
+        {% endfor %}
+    </div>
 {% endblock %}

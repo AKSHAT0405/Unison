@@ -3,5 +3,13 @@
     Unis 
 {% endblock %}
 {% block content %}
-    <h1 class = "text-center mt-4">welcome to Unison</h1>
+    <h1 class = "text-center mt-4">Are you sure you want to delete the unis ?</h1>
+    
+    <form method="post">
+        {% csrf_token %}
+        <button class="btn btn-solid">Delete</button>
+        <a class="btn btn-solid" href="{% url 'unis_list' %}">Cancel</a>
+    </form>
+
+
 {% endblock %}

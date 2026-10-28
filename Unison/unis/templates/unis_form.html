@@ -4,4 +4,18 @@
 {% endblock %}
 {% block content %}
     <h1 class = "text-center mt-4">welcome to Unison</h1>
+
+    <h2>
+        {% if form.instance.pk %}
+            Edit unis
+        {% else %}
+            Create unis
+        {% endif %}
+        <form class="form" method="post" enctype = "multipart/form-data" ">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button class="btn btn-warning" type="submit">Submit</button>
+        </form>
+        <a href="{% url 'unis_list' %}">Back to Unis list</a>
+    </h2>
 {% endblock %}

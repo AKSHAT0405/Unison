@@ -1,2 +1,0 @@
-Unison meaning: It  refers to two or more voices or instruments playing the same note at the same time, symbolizing harmony, agreement, and collective action.
-Community aspect: For a social media application, it implies that every user’s post is a part of a larger, unified conversation— a perfect metaphor for a platform built on shared ideas.

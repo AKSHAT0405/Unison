@@ -28,25 +28,25 @@ def unis_create(request):
     })
 
 def unis_edit(request , Unis_id):
-    unis = get_object_or_404(unis, pk = Unis_id , user = request.user)
+    unis_obj = get_object_or_404(unis, pk = Unis_id , user = request.user)
     if request.method == "POST":
-        form = UnisForm(request.POST , request.FILES , instance=unis)
+        form = UnisForm(request.POST , request.FILES , instance=unis_obj)
         if form.is_valid():
             Unis = form.save(commit=False)
             Unis.user = request.user
             Unis.save()
             return redirect('unis_list')
     else:
-        form = UnisForm(instance=unis)
+        form = UnisForm(instance=unis_obj)
 
     return render(request , 'unis_form.html' , {
     'form':form
     })
 
-def unis_delete(request , unis_id):
-    unis = get_object_or_404(unis , pk = unis_id , user = request.user)
+def unis_delete(request , Unis_id):
+    unis_obj = get_object_or_404(unis , pk = Unis_id , user = request.user)
     if request.method == 'POST':
-        unis.delete()
+        unis_obj.delete()
         return redirect('unis_list')
     
-    return render(request , 'unis_confirm_delete.html' , { 'unis' : unis }) 
+    return render(request , 'unis_confirm_delete.html' , { 'unis' : unis_obj }) 
