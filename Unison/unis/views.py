@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import unis
 from .forms import UnisForm 
 from django.shortcuts import get_object_or_404 , redirect
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 def index(request):
     return render(request , 'index.html')
@@ -12,6 +13,7 @@ def unis_list(request):
         'uniss' : uniss
     })
 
+@login_required
 def unis_create(request):
     if request.method == "POST":
         form = UnisForm(request.POST , request.FILES)
@@ -27,6 +29,7 @@ def unis_create(request):
         'form':form
     })
 
+@login_required
 def unis_edit(request , Unis_id):
     unis_obj = get_object_or_404(unis, pk = Unis_id , user = request.user)
     if request.method == "POST":
@@ -43,6 +46,7 @@ def unis_edit(request , Unis_id):
     'form':form
     })
 
+@login_required
 def unis_delete(request , Unis_id):
     unis_obj = get_object_or_404(unis , pk = Unis_id , user = request.user)
     if request.method == 'POST':
