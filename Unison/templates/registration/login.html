@@ -3,8 +3,12 @@
     Unis 
 {% endblock %}
 {% block content %}
+<h2>Login form</h2>
     <form method="post">
+        {% csrf_token %}
         {{form.as_p}}
-        <button class="btn-primary"></button>
+        <button class="btn btn-primary">Submit</button>
     </form>
+
+    <p>Dont have an account? <a href="{% url 'register' %}">Register here</a></p>
 {% endblock %}

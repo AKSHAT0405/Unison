@@ -83,14 +83,30 @@
                 </svg>
               </button>
             </form>
+            <a href="{% url 'unis_list' %}" class="btn btn-primary mx-2"
+              >Unis Home</a
+            >
+            {% if user.is_authenticated %}
+            <form method="post" action="{% url 'logout' %}">
+              {% csrf_token %}
+              <button class="btn-solid" type="submit">logout</button>
+            </form>
+            {% else %}
+            <a href="{% url 'register' %}" class="btn btn-primary mx-2">
+              Register
+            </a>
+            <a href="{% url 'login' %}" class="btn btn-primary mx-2">
+              Login
+            </a>
+            {% endif %}
           </div>
         </dialog>
       </div>
     </nav>
     <div class="container">
-        {% block content %}
-            Unisonary is a platform for sharing and discovering unis.
-        {% endblock %}
+    {% block content %}
+     Unisonary is a platform for sharing and discovering unis.
+    {% endblock %}
     </div>
   </body>
 </html>

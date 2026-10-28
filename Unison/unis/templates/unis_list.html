@@ -15,8 +15,10 @@
                 <p class="card-text">
                     {{ unis.text}}
                 </p>
+                {% if unis.user == user %}
                 <a href="{% url 'unis_edit' unis.id %}" class="btn-solid theme-primary">Edit</a>
                 <a href="{% url 'unis_delete' unis.id %}" class="btn-solid theme-primary">Delete</a>
+                {% endif %}
                 </div>
             </section>
         {% endfor %}
