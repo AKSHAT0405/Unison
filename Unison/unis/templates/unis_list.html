@@ -11,16 +11,18 @@
             <section class="card" style="max-width: 320px">
                 <img src="{{unis.photo.url}}" class="card-img-top" alt="..." />
                 <div class="card-body">
-                <h4 class="card-title">{{ unis.user.username}}</h4>
-                <p class="card-text">
-                    {{ unis.text}}
-                </p>
-                {% if unis.user == user %}
-                <a href="{% url 'unis_edit' unis.id %}" class="btn-solid theme-primary">Edit</a>
-                <a href="{% url 'unis_delete' unis.id %}" class="btn-solid theme-primary">Delete</a>
-                {% endif %}
+                    <h4 class="card-title">{{ unis.user.username}}</h4>
+                    <p class="card-text">
+                        {{unis.text}}
+                    </p>
+                    {% if unis.user == user %}
+                    <a href="{% url 'unis_edit' unis.id %}" class="btn-solid theme-primary">Edit</a>
+                    <a href="{% url 'unis_delete' unis.id %}" class="btn-solid theme-primary">Delete</a>
+                    {% endif %}
                 </div>
             </section>
+        {% empty %}
+        <h2>No posts found</h2>
         {% endfor %}
     </div>
 {% endblock %}

@@ -10,12 +10,18 @@
       integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe"
       crossorigin="anonymous"
     />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    />
     <title>{% block title %} Unisonary {% endblock %}</title>
   </head>
   <body>
     <nav class="navbar md:navbar-expand bg-1">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Unison</a>
+        <a href="{% url 'unis_list' %}" class="navbar-brand" href="#"
+          >Unison</a
+        >
         <button
           class="btn-icon navbar-toggler"
           type="button"
@@ -43,49 +49,20 @@
             ></button>
           </div>
           <div class="drawer-body mb-2 md:mb-0">
-            <ul class="nav navbar-nav me-auto">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-              </li>
-              <li class="nav-item">
-                <button
-                  class="nav-link"
-                  type="button"
-                  data-bs-toggle="menu"
-                  aria-expanded="false"
-                >
-                  Menu
-                </button>
-                <div class="menu">
-                  <a class="menu-item" href="#">Action</a>
-                  <a class="menu-item" href="#">Another action</a>
-                  <hr class="menu-divider" />
-                  <a class="menu-item" href="#">Something else here</a>
-                </div>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-              </li>
-            </ul>
-            <form class="hstack gap-2" role="search">
+            <form class="hstack gap-2" role="search" method="get" action="{% url 'unis_list' %}">
               <input
+                style="max-width: 500px; "
                 class="form-control"
                 type="search"
                 placeholder="Search"
                 aria-label="Search"
+                name = "q"
+                value="{{ request.GET.q }}"
               />
               <button class="btn-solid btn-icon theme-secondary" type="submit">
-                <svg class="bi" width="16" height="16">
-                  <use href="#search" />
-                </svg>
+                <i class="bi bi-search"></i>
               </button>
             </form>
-            <a href="{% url 'unis_list' %}" class="btn btn-primary mx-2"
-              >Unis Home</a
-            >
             {% if user.is_authenticated %}
             <form method="post" action="{% url 'logout' %}">
               {% csrf_token %}

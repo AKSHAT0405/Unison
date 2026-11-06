@@ -9,7 +9,15 @@ def index(request):
     return render(request , 'index.html')
 
 def unis_list(request):
+    query = request.GET.get('q')
     uniss = unis.objects.all().order_by('-created_at')
+    if query:
+        uniss = unis.objects.filter(text__icontains = query)
+        return render(request, 'unis_list.html' , {
+            'uniss' : uniss,
+            'query': query
+        })
+
     return render(request, 'unis_list.html' , {
         'uniss' : uniss
     })
