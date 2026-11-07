@@ -1,28 +1,30 @@
 {% extends "layout.html" %}
-{% block title %} 
-    Unis
-{% endblock %}
-{% block content %}
-    <h1 class="text-center mt-4">welcome to Unison</h1>
+{% block title %}Unis{% endblock %}
 
-    <a class="btn btn-primary mb-4" href="{% url 'unis_create' %}">create a tweet</a>
-    <div class="container row gap-3">
-        {% for unis in uniss %}
-            <section class="card" style="max-width: 320px">
-                <img src="{{unis.photo.url}}" class="card-img-top" alt="..." />
-                <div class="card-body">
-                    <h4 class="card-title">{{ unis.user.username}}</h4>
-                    <p class="card-text">
-                        {{unis.text}}
-                    </p>
-                    {% if unis.user == user %}
-                    <a href="{% url 'unis_edit' unis.id %}" class="btn-solid theme-primary">Edit</a>
-                    <a href="{% url 'unis_delete' unis.id %}" class="btn-solid theme-primary">Delete</a>
-                    {% endif %}
-                </div>
-            </section>
-        {% empty %}
-        <h2>No posts found</h2>
-        {% endfor %}
-    </div>
+{% block content %}
+  <h1 class="text-center mt-4">welcome to Unison</h1>
+
+  <a class="btn btn-primary mb-4" href="{% url 'unis_create' %}">Create Unis</a>
+
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">
+    {% for unis in uniss %}
+      <div class="col">
+        <section class="card h-100">
+          {% if unis.photo %}
+            <img src="{{ unis.photo.url }}" class="card-img-top" alt="Photo by {{ unis.user.username }}" />
+          {% endif %}
+          <div class="card-body">
+            <h4 class="card-title">{{ unis.user.username }}</h4>
+            <p class="card-text">{{ unis.text }}</p>
+            {% if unis.user == user %}
+              <a href="{% url 'unis_edit' unis.id %}" class="btn btn-sm btn-primary">Edit</a>
+              <a href="{% url 'unis_delete' unis.id %}" class="btn btn-sm btn-outline-danger">Delete</a>
+            {% endif %}
+          </div>
+        </section>
+      </div>
+    {% empty %}
+      <h2>No posts found</h2>
+    {% endfor %}
+  </div>
 {% endblock %}
