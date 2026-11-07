@@ -10,6 +10,7 @@ wheels/
 .venv
 
 db.sqlite3
+.env
 media/
 Unison/db.sqlite3
 Unison/media/

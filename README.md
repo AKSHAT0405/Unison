@@ -1,33 +1,37 @@
 # Unison 
 ### A lightweight, Twitter-inspired Django web application where users can create profiles, share and discover Posts.
 
-
 ## ✨ Features
-* **User Authentication:** Users can easily register and log in to the platform.
-* **Post Management (CRUD):** Users have full control to create, read, update, and delete their own posts.
-* **Global Feed:** A central home page that displays all posts shared by the community.
-* **Search Functionality:** A global search bar to quickly find specific content across all posts.
+- **Authentication:** register, log in and log out.
+- **Full CRUD:** create, read, update and delete your own Unis (a Unis is a text post with a photo).
+- **Ownership rules:** Edit and Delete buttons only appear on your own posts.
+- **Global feed:** the home page shows every Unis shared on the platform.
+- **Search facility:** find Unis/posts by keyword from the navbar.
+- **Adaptive user interface:** dark theme, mobile-friendly navbar and a card grid that adapts to screen size.
 
 
-## UI Preview
-[Unis list](screenshots/unis_list.png)
+## 📽️ UI Preview
+#### Login view:
+![Unis list](Unison/screenshots/unis_list.png)
 
-[Unis create view](screenshots/unis_create.png)
+#### Create view:
+![Unis create view](Unison/screenshots/unis_create.png)
 
-
-
-## 🛠️ Tech Stack
-* **Backend:** Python, Django , Sqlite
-* **Frontend:** HTML, CSS, Bootstrap
-* **Image Processing:** Pillow
-* **Environment Management:** `uv`
+#### Logout view:
+![Logged-out view](Unison/screenshots/unis_logout_view.png)
 
 
-## Installation & Setup 
+## Tech Stack
+- **Backend:** Python 3.13, Django, SQLite
+- **Frontend:** HTML, CSS, Bootstrap 5.3, Bootstrap Icons
+- **Forms:** django-crispy-forms with crispy-bootstrap5
+- **Images:** Pillow
+- **Environment:** uv
 
-**Prerequisites:** 
-* Python 3.8+ installed on your system.
-* `uv` installed globally for environment management.
+
+## Getting Started
+
+**Prerequisites:** Python 3.13 and [uv](https://docs.astral.sh/uv/) installed.
 
 **1. Clone the repository:**
 ```bash
